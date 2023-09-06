@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title> Customer details Entry</title>
+  <link rel="stylesheet" type="text/css" href="en.css">
+</head>
+<body>
+	<div class="container">
+		
+		<h2>Customer Details</h2><br>
+
+			<div class="customer">
+					<div class="name">
+					   <input type="name" placeholder="Firstname" id="firstname" required>
+				    </div>
+
+				    <div class="name">
+				    <input type="name" placeholder="Lastname" id="lastname">
+				    </div>
+
+				    <div class="name">
+					<input type="name" placeholder="Street" id="street">
+					</div>
+                    
+                    <div class="name">
+					<input type="name" placeholder="Address" id="address">
+					</div>
+
+					<div class="name">
+					<input type="name" placeholder="city" id="city">
+					</div>
+
+					<div class="name">
+					<input type="name" placeholder="State" id="state">
+					</div>
+
+					<div class="name">
+					<input type="name" placeholder="Email" id="email">
+					</div>
+
+					<div class="name">
+					<input type="name" placeholder="phone" id="phone">
+					</div>
+				    <button onclick="addData()" class="add">Add</button>
+
+                    
+            </div>  
+       
+	</div>
+	 <table id="outputTable">
+       <tr>
+			<th>firstName</th>
+			<th>lastName</th>
+			<th>street</th>
+			<th>Address</th>
+			<th>city</th>
+			<th>state</th>
+			<th>Email</th>
+			<th>phone</th>
+			<th>Action</th>
+		</tr>
+    </table>
+	<script>
+       function addData() {
+			// Get input values
+			let fn = document.getElementById("firstname").value;
+			let ln = document.getElementById("lastname").value;
+			let st= document.getElementById("street").value;
+			let ad = document.getElementById("address").value;
+			let ci = document.getElementById("city").value;
+			let stat= document.getElementById("state").value;
+			let em =document.getElementById("email").value;
+			let ph =document.getElementById("phone").value;
+			
+			
+			// Get the table and insert a new row at the end
+			let table = document.getElementById("outputTable");
+			let newRow = table.insertRow(table.rows.length);
+			
+			// Insert data into cells of the new row
+			newRow.insertCell(0).innerHTML = fn;
+			newRow.insertCell(1).innerHTML = ln;
+			newRow.insertCell(2).innerHTML = st;
+			newRow.insertCell(3).innerHTML = ad;
+			newRow.insertCell(4).innerHTML = ci;
+			newRow.insertCell(5).innerHTML = stat;
+			newRow.insertCell(6).innerHTML = em;
+			newRow.insertCell(7).innerHTML = ph;
+			newRow.insertCell(8).innerHTML =
+				'<button onclick="editData(this)">Edit</button>'+
+				'<button onclick="deleteData(this)">Delete</button>';
+			
+			// Clear input fields
+			clearInputs();
+		}
+
+		function editData(button) {
+			
+			// Get the parent row of the clicked button
+			let row = button.parentNode.parentNode;
+			
+			// Get the cells within the row
+			let fnCell = row.cells[0];
+			let lnCell = row.cells[1];
+			let stCell = row.cells[2];
+			let adCell = row.cells[3];
+			let ciCell = row.cells[4];
+			let statCell = row.cells[5];
+			let emCell = row.cells[6];
+		    let phCell = row.cells[7];
+			
+			
+			// Prompt the user to enter updated values
+			let firstname = prompt("Enter the updated name:",fnCell.innerHTML);
+			let lastname =prompt("Enter the updated name:",lnCell.innerHTML);
+			let street =prompt("Enter the updated street:",stCell.innerHTML);
+			let address =prompt("Enter the updated address:",adCell.innerHTML);
+			let city =prompt("Enter the updated address:",ciCell.innerHTML);
+			let state =prompt("Enter the updated address:",statCell.innerHTML);	
+			let email =prompt("Enter the updated email:",emailCell.innerHTML);
+			let phone =prompt("Enter the updated mobile details:",phCell.innerHTML);
+			
+			
+			// Update the cell contents with the new values
+			fnCell.innerHTML = firstname;
+            lnCell.innerHTML = lastname;
+            stCell.innerHTML=  street;
+            adCell.innerHTML = address;
+            cityCell.innerHTML = city;
+            statCell.innerHTML = state;
+		    emCell.innerHTML = email;
+			phCell.innerHTML = phone;
+			
+		}
+		function deleteData(button) {
+			
+			// Get the parent row of the clicked button
+			let row = button.parentNode.parentNode;
+
+			// Remove the row from the table
+			row.parentNode.removeChild(row);
+		}
+		function clearInputs() {
+			
+			// Clear input fields
+			document.getElementById("firstname").value = "";
+			document.getElementById("lastname").value = "";
+			document.getElementById("street").value="";
+			document.getElementById("address").value = "";
+			document.getElementById("city").value = "";
+			document.getElementById("state").value = "";
+			document.getElementById("email").value = "";
+			document.getElementById("phone").value = "";
+			
+		}
+	</script>
+</body>
+</html>
